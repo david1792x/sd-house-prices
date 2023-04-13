@@ -10,6 +10,7 @@ In this project, we will webscrape the **Zillow** website to extract a dataset o
 
 ## **Project development**
 ### Part I. Extracting dataset from Zillow
+[Part I notebook](markdown/1._Extracting_Dataset.md)
 ### Part II. Exploring and cleaning our dataset
 ### Part III. Building a machine learning model
 ### Part IV. Deploying a web application
