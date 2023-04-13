@@ -1,17 +1,24 @@
+# Import required modules
 import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
 
-model = pickle.load(open('StreamlitApp/sd_pipeline.pkl', 'rb'))
+# Load machine learning model
+model = pickle.load(open('streamlit/sd_pipeline.pkl', 'rb'))
 
+# Set page style and title
 st.set_page_config(layout='wide')
 st.markdown('# San Diego County House Price Predictor :house_with_garden:')
       
 st.markdown('## This app predicts the price of a house in San Diego County')
 st.markdown('### Please enter the following information:')
 st.markdown("""---""")
+
+# Set columns
 col1, col2, col3 = st.columns(3)
+
+# Define input parameters
 with col1:
     beds = st.select_slider('Number of bedrooms', options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     baths = st.select_slider('Number of bathrooms', options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -50,7 +57,7 @@ with col3:
                                 'Point Loma',
                                 'Mission Valley'))
 
-
+# Map coordinates to mean coordinates of city
 lat_long = {'Oceanside': [-117.3110072008547, 33.215828846764346],
             'La Mesa': [-117.04050810250897, 32.77894560143369],
             'San Marcos': [-117.18052550394589, 33.13324804284103],
@@ -82,12 +89,14 @@ lat_long = {'Oceanside': [-117.3110072008547, 33.215828846764346],
             'Imperial Beach': [-117.1172809609375, 32.5788013046875],
             'Ramona': [-116.95042874999999, 33.018945575]}
 
+# Map home type to needed format
 home_dict = {'Single family': 'SINGLE_FAMILY',
              'Condominium': 'CONDO',
              'Townhouse': 'TOWNHOUSE',
              'Mobile home': 'MANUFACTURED',
              'Apartment': 'APARTMENT'}
 
+# Predict home price
 def predict():
     home_type = home_dict[home]
     lat, long = lat_long[city][1], lat_long[city][0]
@@ -96,6 +105,7 @@ def predict():
     prediction = model.predict(df)
     return prediction
 
+# Prediction button 
 with col3:
     st.markdown("""---""")
     if st.button('Predict'):
