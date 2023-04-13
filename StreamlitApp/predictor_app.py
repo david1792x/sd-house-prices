@@ -15,7 +15,7 @@ col1, col2, col3 = st.columns(3)
 with col1:
     beds = st.select_slider('Number of bedrooms', options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     baths = st.select_slider('Number of bathrooms', options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-    area = st.number_input('Square footage of the house', min_value = 500, max_value = 8000, value = 500, step = 250)
+    area = st.number_input('Living area of the house', min_value = 500, max_value = 8000, value = 500, step = 250)
     home = st.selectbox('Home type', ('Single family', 'Condominium', 'Townhouse', 'Mobile home', 'Apartment'))
 
 with col3:
