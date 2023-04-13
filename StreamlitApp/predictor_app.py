@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+import sklearn
+import XGBoost
 
 model = pickle.load(open('StreamlitApp/sd_pipeline.pkl', 'rb'))
 
