@@ -7,7 +7,7 @@
 
 |  <img src='images/mapimage.jpeg' height="450">                         |<img src='images/county_location_2.png' height="450">                              |
 |:----------------------------------------------------------------------:|:---------------------------------------------------------------------------------:|
-| ***Figure 1.**  San Diego County in Google Maps*                        | ***Figure 2.** Location of San Diego County in California*                        |
+| ***Figure 1.**  San Diego County in Google Maps*                        | ***Figure 2.** Location of San Diego County*                        |
 
 </div>
 
