@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import pickle
 
-model = pickle.load(open('sd_pipeline.pkl', 'rb'))
+model = pickle.load(open('StreamlitApp/sd_pipeline.pkl', 'rb'))
 
 st.set_page_config(layout='wide')
 st.markdown('# San Diego County House Price Predictor :house_with_garden:')
