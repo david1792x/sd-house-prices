@@ -2,7 +2,7 @@
 
 
 
-In this section, we will explore our data with visualizations in order to extract useful information and underlying patterns, as well as cleaning it for modelling further on. To start off, we import the dataset from the .csv file to confirm that our data was saved correctly.
+In this section, we will **explore** our data with **visualizations** in order to extract useful **information** and underlying **patterns**, as well as **cleaning** it for **modeling** further on. To start off, we import the dataset from the .csv file to confirm that our data was saved correctly.
 
 
 ```python
@@ -309,7 +309,7 @@ data.head(5)
 
 
 
-Since a lot of the information found in the dataset is related to Zillow's internal data, we can reduce the number of variables to the ones that we care about and that we can use to build our model. By analyzing the dataset, we concluded that only 6.3% of our listings contained missing values in the important variables, and dropping them would not make a very significant difference in our dataset, so we drop the samples with missing values.
+Since a lot of the information found in the dataset is related to Zillow's internal data, we can **reduce** the number of variables to the ones that we care about and that we can use to build our model. By analyzing the dataset, we concluded that only 6.3% of our listings contained missing values in the important variables, and dropping them would not make a very significant difference in our dataset, so we **drop** the samples with missing values.
 
 
 ```python
@@ -415,7 +415,7 @@ df.head(5)
 
 
 
-We can now view some general information of the dataset. From the pandas .info method, we can tell that the dataset is now reduced to 25023 entries with no missing values, containing 8 predictor variables and a target variable (price).
+We can now view some **general information** of the dataset. From the pandas .info method, we can tell that the dataset is now reduced to 25023 entries with no **missing values**, containing **8 predictor variables** and a **target variable** (price).
 
 
 ```python
@@ -441,7 +441,7 @@ df.info()
     memory usage: 1.7+ MB
     
 
-Looking at the general statistics of the numerical variables of our model, we can see that there need to be a data cleaning process, since we have impossible variables (0 bedrooms/bathrooms/living area and an impossibly high number of bedrooms and bathrooms).
+Looking at the general **statistics** of the numerical variables of our model, we can see that there need to be a **data cleaning** process, since we have **impossible** variables (0 bedrooms/bathrooms/living area and an impossibly high number of bedrooms and bathrooms).
 
 
 ```python
@@ -553,7 +553,7 @@ df.describe()
 
 
 
-We clean the dataset by removing impossible values and outliers, like prices below \\$100,000 and above \\$5,000,000, since there are very few listings these prices and most of them are explained by errors in reported pricing and do not correspond to the actual sale price. We also need to shuffle our data, since the method used to obtain it was based on price, and the data index is sorted by price range because of this.
+We **clean** the dataset by removing impossible values and **outliers**, like prices below **\$100,000** and above **\$5,000,000**, since there are very few listings these prices and most of them are explained by **errors** in reported pricing and do not correspond to the actual sale price. We also need to **shuffle** our data, since the method used to obtain it was based on price, and the data index is sorted by price range because of this.
 
 
 ```python
@@ -562,7 +562,7 @@ df = df[(df['bedrooms'] > 0) & (df['bedrooms'] < 15) & (df['bathrooms'] > 0) & (
 df = df.sample(frac = 1, random_state = 19).reset_index(drop=True)
 ```
 
-We can now move over to visualizing the patterns in our data. By plotting the distribution of the price, we can tell that it is skewed towards cheaper prices. Most of the listings were sold at around \\$500,000 - \\$700,000, with values higher than \\$3,000,000 being pretty rare.
+We can now move over to **visualizing** the patterns in our data. By plotting the **distribution of the price**, we can tell that it is **skewed** towards cheaper prices. Most of the listings were sold at around **\$500,000 - \$700,000**, with values higher than **\$3,000,000** being pretty rare.
 
 
 ```python
@@ -582,7 +582,7 @@ plt.show()
     
 
 
-Visualizing the number of bedrooms against price, there is not a very clear pattern, but even though the variance between prices is pretty high, there are not a lot of cheap homes with a large number of bedrooms, or expensive homes with a low number of bedrooms, which leads to believe that there is some sort of linear relationship, even if they are not that correlated.
+Visualizing the **number of bedrooms** against **price**, there is not a very clear pattern, but even though the **variance** between prices is pretty high, there are not a lot of cheap homes with a large number of bedrooms, or expensive homes with a low number of bedrooms, which leads to believe that there is some sort of **linear relationship**, even if they are not that correlated.
 
 
 ```python
@@ -601,7 +601,7 @@ plt.show()
     
 
 
-The number of bathrooms exhibits a similar relationship to the price than the bedrooms, in the sense that the linear relationship is not crystal clear, but we can tell that there is one. The relationship in this case is a little bit more notable, and we will confirm this further on.
+The number of **bathrooms** exhibits a similar relationship to the **price** than the bedrooms, in the sense that the **linear relationship** is not crystal clear, but we can tell that there is one. The relationship in this case is a little bit more notable, and we will confirm this further on.
 
 
 ```python
@@ -620,7 +620,7 @@ plt.show()
     
 
 
-Finally, we plot the living area in square feet against the price. There is a lot of variance in the data, but there is a clear linear pattern that correlates these two variables.
+Finally, we plot the **living area** in square feet against the **price**. There is a lot of **variance** in the data, but there is a clear **linear pattern** that correlates these two variables.
 
 
 ```python
@@ -639,8 +639,8 @@ plt.show()
     
 
 
-In order to confirm what the visualizations told us, we can calculate the Pearson correlation of every variable against the data. Even if the correlation is not super high, there is a pattern in the living area, bathrooms and bedrooms. The zipcode variable is categorical even if it contains numerical data, so it is not useful in the correlation analysis, and we can also tell that the longitude variable is negatively correlated with the price, while the latitude variable is not.
-This makes sense, since more negative values in latitude correspond to houses that are located more to the west than other houses, and that means that these houses are closer to the Pacific Ocean, which increases the price since coastal view is a very important factor in real estate pricing.
+In order to confirm what the **visualizations** told us, we can calculate the **Pearson correlation** of every variable against the data. Even if the correlation is not super high, there is a **pattern** in the living area, bathrooms and bedrooms. The zipcode variable is categorical even if it contains numerical data, so it is not useful in the correlation analysis, and we can also tell that the longitude variable is **negatively correlated** with the price, while the latitude variable is not.
+This makes sense, since more negative values in latitude correspond to houses that are located more to the west than other houses, and that means that these houses are closer to the Pacific Ocean, which increases the price since **coastal view** is a very important factor in real estate pricing.
 
 
 ```python
@@ -658,7 +658,7 @@ plt.show()
     
 
 
-Now, we can move over to analyzing and cleaning our categorical variables. The homeType variable contains the category of the listing, like if it is a condominium, a mobile home or a regular single family home. 
+Now, we can move over to **analyzing** and **cleaning** our categorical variables. The homeType variable contains the category of the listing, like if it is a condominium, a mobile home or a regular single family home. 
 
 
 ```python
@@ -680,7 +680,7 @@ df['homeType'].value_counts()
 
 
 
-The townhouse and multifamily categories describe similar house types, so we can combine them into a single category, and since there is only one lot listing, we can remove it to reduce the number of categories from 7 to 5.
+The townhouse and multifamily categories describe similar house types, so we can **combine** them into a single category, and since there is only one lot listing, we can **remove** it to reduce the number of categories from 7 to 5.
 
 
 ```python
@@ -691,7 +691,7 @@ df['homeType'] = df['homeType'].replace(['MULTI_FAMILY', 'TOWNHOUSE'], 'TOWNHOUS
 df = df[df['homeType'] != 'LOT']
 ```
 
-Now, we observe the city variable. There are 27 valid cities in the San Diego County, and the other categories correspond to typos and other external factors. We will remove these listings since there are only a few of them.
+Now, we observe the city variable. There are **27 valid cities** in the San Diego County, and the other categories correspond to typos and other external factors. We will **remove** these listings since there are only a few of them.
 
 
 ```python
@@ -788,7 +788,7 @@ cities = ['San Diego',
 df = df[df['city'].isin(cities)]
 ```
 
-The San Diego city corresponds to a very big area of the county, and it would be interesting to break it up into smaller sections so that our model can identify the patterns in each area. We associate each zipcode inside the San Diego city to a smaller, closer city, or create new areas, like Downtown San Diego. Then, we change the city from San Diego to our new San Diego area and drop the zip code variable, since it is already included in the more general city variable.
+The San Diego city corresponds to a very big area of the county, and it would be interesting to **break it up** into smaller sections so that our model can identify the patterns in each area. We associate each zipcode inside the San Diego city to a smaller, closer city, or **create new areas**, like Downtown San Diego. Then, we change the city from San Diego to our new San Diego area and **drop** the zip code variable, since it is already included in the more general city variable.
 
 
 ```python
@@ -831,7 +831,7 @@ df['city'] = df['zipcode'].map(city_dict).fillna(df['city'])
 df.drop('zipcode', axis=1, inplace=True)
 ```
 
-Now, we can plot all of our listings by price and show them alongside a map of San Diego County to visualize patterns in the house prices. There are 3 areas that are clearly more expensive than other ones, corresponding to the La Jolla, Rancho Santa Fe and Coronado areas, which are commonly known as more expensive areas. 
+Now, we can **plot** all of our listings by price and show them alongside a map of San Diego County to **visualize** patterns in the house prices. There are **3** areas that are clearly more expensive than other ones, corresponding to the **La Jolla, Rancho Santa Fe** and **Coronado** areas, which are commonly known as more expensive areas. 
 
 
 ```python
@@ -858,4 +858,4 @@ plt.show()
     
 
 
-Now that our dataset is cleaned and we extracted interesting information from it, we can move forward to modelling our data using machine learning to predict house prices.
+Now that our dataset is **cleaned** and we extracted **interesting information** from it, we can move forward to **modeling** our data using **machine learning** to **predict** house prices.
