@@ -1,4 +1,4 @@
-## **Extracting dataset from Zillow**
+# **Extracting dataset from Zillow**
 
 The first step in any **machine learning** project is to obtain a dataset. In this case, we will use Zillow's `GetSearchPageState` request in order to retrieve the search results of a particular query. 
 
