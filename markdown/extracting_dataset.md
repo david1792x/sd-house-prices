@@ -4,23 +4,23 @@ The first step in any machine learning project is to obtain a dataset. In this c
 
 The initial page shown when looking for real estate listings on Zillow, shows all of the listings on a map, or a menu with multiple pages. In this case, we are looking for all of the homes sold in San Diego County in the last 12 months (April 2022 - April 2023).
 
-![Zillow Page](images/zillow_1.PNG)
+![Zillow Page](/images/zillow_1.PNG)
 
 We can extract the listings that match our query by using the request that Zillow itself uses to retrieve the data, called GetSearchPageState. We can acess this request by opening the browser's developer tools, and looking at the Fetch/XHR network requests. We find that a GetSearchPageState request is made every time we change the parameters of the query (map size, price range, pagination, etc.)
 
-![Zillow Page](images/zillow_2.PNG)
+![Zillow Page](/images/zillow_2.PNG)
 
 We can look at a preview of the request response, which returns a nested dictionary of all of the data retrieved by the request. This response contains information about the number of listings, the number of pages, and most importantly, the actual data of the listings. 
 
-![Zillow Page](images/zillow_3.PNG)
-![Zillow Page](images/zillow_4.PNG)
-![Zillow Page](images/zillow_5.PNG)
+![Zillow Page](/images/zillow_3.PNG)
+![Zillow Page](/images/zillow_4.PNG)
+![Zillow Page](/images/zillow_5.PNG)
 
 As we can see, the listings are held in a list inside the request response. We will use Python to make the requests that extract all (or most) of our data in order to build a dataset directly from Zillow's listings.
 
 We start off by copying the request as a Bash(cURL) request and use an online tool that will convert our request to the Python language. We get a dictionary of request headers, which are constant for every request made using Zillow, and a request link, whose response will be obtained using the .get method from the Python requests module. 
 
-![Zillow Page](images/zillow_6.PNG)
+![Zillow Page](/images/zillow_6.PNG)
 
 We can move on to implementing the Python code. First, we import the modules that are going to be needed. We will use requests to make the requests and retrieve the responses, and pandas to save the data from the listings to a dataframe.
 
