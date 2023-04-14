@@ -47,33 +47,75 @@ The general workflow diagram of the project is shown below.
 ## **Objectives**
 - Use **Zillow** house listings to create a **dataset** of homes sold in San Diego county between April 2022 and April 2023
 - Create **visualizations** and extract **patterns** from the data
-- Train a simple **machine learning** model to predict house prices based on home information
-- Design and deploy a web **application** for predicting house prices according to user input
+- Train a simple **machine learning** model to **predict** house prices based on home information
+- Design and deploy a **web application** that predicts house prices according to user input
 
 ## **Project development**
-
-Link to the complete [Jupyter](jupyter/sd_house_prices_complete.ipynb) Notebook of the project (not descriptive).
 ### Part I. Extracting dataset from Zillow
-Link to the [markdown](markdown/extracting_dataset.md) file
+The first step in developing the project was to obtain a **dataset**. Zillow was chosen as the website to extract the data from, since it is the largest real estate website in the United States with over **135 million** real estate listings. A fetch request is used to access Zillow's `GetSearchPageState` API call, which contains information of house listings that match a specific query. Then, the request responses are combined to make a .csv file of over 26,000 listings of houses sold between April 2022 and April 2023 in San Diego County.
 
-Link to the [Jupyter](jupyter/extracting_dataset.ipynb) Notebook 
+<br/>
+
+<div align='center'>
+    
+|Detailed information|
+|:---------------------------------------------:|
+|Link to the [markdown](markdown/extracting_dataset.md) file|
+| Link to the [Jupyter](jupyter/extracting_dataset.ipynb) Notebook   |
+
+</div>
+
+---
 
 ### Part II. Exploring and cleaning our dataset
-Link to the [markdown](markdown/exploratory_data_analysis.md) file
+After obtaining the dataset, some **cleaning** needs to be done, since it contains the raw data from Zillow's listings, which often times is filled with incorrect values. After cleaning the data from **outliers** and **errors**, we can show some **trends** in graphic form, like price histograms, relationship of the different variables with house price, prices of different zones in the map, among others.
 
-Link to the [Jupyter](jupyter/exploratory_data_analysis.ipynb) Notebook
+<br/>
+
+<div align='center'>
+    
+|Detailed information|
+|:---------------------------------------------:|
+|Link to the [markdown](markdown/exploratory_data_analysis.md) file|
+|Link to the [Jupyter](jupyter/exploratory_data_analysis.ipynb) Notebook |
+
+</div>
+
+---
 
 ### Part III. Building a machine learning model
-Link to the [markdown](markdown/ml_modeling.md) file
+Once the data is cleaned, we establish a **machine learning** pipeline to create a model that is capable of learning the patterns in the data in order to make **predictions** on house price. The pipeline incorporates a preprocessor that transforms our data to an algorithm-friendly structure, and an extreme gradient boosting regression tree estimator using the `XGBoost` module that is trained and tuned until the performance metrics are good enough for our application purpose.
 
-Link to the [Jupyter](jupyter/ml_modeling.ipynb) Notebook
+<br/>
+
+<div align='center'>
+    
+|Detailed information|
+|:---------------------------------------------:|
+|Link to the [markdown](markdown/ml_modeling.md) file|
+|Link to the [Jupyter](jupyter/ml_modeling.ipynb) Notebook|
+
+</div>
+
+---
 
 ### Part IV. Deploying a web application
-Link to the [markdown](markdown/deploy_web_app.md) file
+Now that we have a trained model that performs as desired, we can save it and use it to build a **web application** that lets the user input home information, and returns an estimated price for the described home. The framework used to develop the web application is `Streamlit`, and it was chosen because of its simplicity and **data-centered** approach. Finally, the web app is deployed using **Streamlit Cloud Services** and open for anyone's use.  
 
-Link to the [Python](StreamlitApp/predictor_app.py) script
+<br/>
 
-Link to the [web application](https://david1792x-sd-house-prices.streamlit.app/)
+<div align='center'>
+    
+|Detailed information|
+|:---------------------------------------------:|
+|Link to the [markdown](markdown/deploy_web_app.md) file|
+| Link to the [Python](StreamlitApp/predictor_app.py) script|
+|Link to the [web application](https://david1792x-sd-house-prices.streamlit.app/)|
+
+</div>
+
+---
 
 ## **Discussion and final remarks**
 
+Link to the complete [Jupyter](jupyter/sd_house_prices_complete.ipynb) Notebook of the project (not descriptive).
