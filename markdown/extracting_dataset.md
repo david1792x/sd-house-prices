@@ -1,28 +1,59 @@
 ## **Extracting dataset from Zillow**
 
-The first step in any machine learning project is to obtain a dataset. In this case, we will use Zillow's GetSearchPageState request in order to retrieve the search results of a particular query. 
+The first step in any **machine learning** project is to obtain a dataset. In this case, we will use Zillow's `GetSearchPageState` request in order to retrieve the search results of a particular query. 
 
-The initial page shown when looking for real estate listings on Zillow, shows all of the listings on a map, or a menu with multiple pages. In this case, we are looking for all of the homes sold in San Diego County in the last 12 months (April 2022 - April 2023).
+The initial page shown when looking for real estate listings on **Zillow**, shows all of the listings on a map, or a menu with multiple pages. In this case, we are looking for all of the homes sold in San Diego County in the last 12 months (April 2022 - April 2023).
 
-![Zillow Page](/images/zillow_1.PNG)
+<div align="center"> 
 
-We can extract the listings that match our query by using the request that Zillow itself uses to retrieve the data, called GetSearchPageState. We can acess this request by opening the browser's developer tools, and looking at the Fetch/XHR network requests. We find that a GetSearchPageState request is made every time we change the parameters of the query (map size, price range, pagination, etc.)
+| <img src='/images/zillow_1.PNG' height="400">                       |
+|:----------------------------------------------------------------------:|
+| ***Figure 1.**  Zillow search page*               |
 
-![Zillow Page](/images/zillow_2.PNG)
+</div> 
 
-We can look at a preview of the request response, which returns a nested dictionary of all of the data retrieved by the request. This response contains information about the number of listings, the number of pages, and most importantly, the actual data of the listings. 
+We can extract the listings that match our query by using the **request** that Zillow itself uses to retrieve the data, called `GetSearchPageState`. We can acess this request by opening the browser's developer tools, and looking at the **Fetch/XHR network requests**. We find that a `GetSearchPageState` request is made every time we change the parameters of the query (map size, price range, pagination, etc.)
 
-![Zillow Page](/images/zillow_3.PNG)
-![Zillow Page](/images/zillow_4.PNG)
-![Zillow Page](/images/zillow_5.PNG)
 
-As we can see, the listings are held in a list inside the request response. We will use Python to make the requests that extract all (or most) of our data in order to build a dataset directly from Zillow's listings.
+<div align="center"> 
 
-We start off by copying the request as a Bash(cURL) request and use an online tool that will convert our request to the Python language. We get a dictionary of request headers, which are constant for every request made using Zillow, and a request link, whose response will be obtained using the .get method from the Python requests module. 
+| <img src='/images/zillow_2.PNG' height="450">                       |
+|:----------------------------------------------------------------------:|
+| ***Figure 2.**  GetSearchPageState request*               |
 
-![Zillow Page](/images/zillow_6.PNG)
+</div> 
 
-We can move on to implementing the Python code. First, we import the modules that are going to be needed. We will use requests to make the requests and retrieve the responses, and pandas to save the data from the listings to a dataframe.
+We can look at a preview of the request **response**, which returns a nested dictionary of all of the data retrieved by the request. This response contains **information** about the number of listings, the number of pages, and most importantly, the actual **data** of the listings. 
+
+<div align="center"> 
+
+| <img src='/images/zillow_3.PNG' height="500">                       |
+|:----------------------------------------------------------------------:|
+| ***Figure 3.**  Request response preview*               |
+
+| <img src='/images/zillow_4.PNG' height="500">                       |
+|:----------------------------------------------------------------------:|
+| ***Figure 4.**  Response list results*               |
+
+| <img src='/images/zillow_5.PNG' height="500">                       |
+|:----------------------------------------------------------------------:|
+| ***Figure 5.**  Home information inside response*               |
+
+</div> 
+
+As we can see, the listings are held in a list inside the request response. We will use Python to make the requests that **extract all** (or most) of our data in order to build a **dataset** directly from Zillow's listings.
+
+We start off by copying the request as a **cURL(bash)** request and use an online tool that will convert our request to the Python language. We get a dictionary of request **headers**, which are constant for every request made using Zillow, and a **request link**, whose response will be obtained using the .get method from the Python requests module. 
+
+<div align="center"> 
+
+| <img src='/images/zillow_6.PNG'>                       |
+|:----------------------------------------------------------------------:|
+| ***Figure 6.**  cURL(bash) request as Python code*               |
+
+</div> 
+
+We can move on to **implementing** the Python code. First, we import the modules that are going to be needed. We will use the requests module to make the requests and retrieve the **responses**, and pandas to save the data from the listings to a **dataframe**.
 
 
 ```python
@@ -34,7 +65,7 @@ pd.set_option('display.max_rows', None)
 pd.set_option('mode.chained_assignment',None)
 ```
 
-Since the request headers are all constant between links from a common website, we can use them for all of the requests we are going to make. 
+Since the request **headers** are all constant between links from a common website, we can use them for all of the requests we are going to make. 
 
 
 ```python
@@ -53,8 +84,8 @@ headers = {
 }
 ```
 
-The GetSearchPageState API request can give a maximum of 500 results from the map, and 40 results for every page, but it was found that a lot of listings were lost when using the map results, so we will define a search query, extract the results from one page, then move over to the next page and so on, until we get all the results associated with the query. 
-The get_data function accepts a request URL associated with certain parameters, extracts the number of pages and iterates through every page in order to retrieve all of the listings. 
+The `GetSearchPageState` API request can give a maximum of **500** results from the map, and **40** results for every page, but it was found that a lot of listings were lost when using the map results, so we will define a search query, extract the results from one page, then move over to the next page and so on, until we get all the results associated with the query. 
+The `get_data` function accepts a request URL associated with certain parameters, extracts the number of pages and iterates through every page in order to retrieve all of the listings. 
 
 
 ```python
@@ -71,7 +102,7 @@ def get_data(url):
     return data
 ```
 
-Just as the map results, the list results on Zillow are also limited to a maximum of 40 results per page, at 20 pages max for a maximum of 800 listings per query. We will use price ranges in order to reduce the number of listings associated with each query so that we can extract as much data as possible. Below, we make a list of all request links of listings with prices ranging from \\$0 to \\$20,000,000, and we run each link through our page iterating function in order to obtain a list with the information of every house found in Zillow that was sold in the last 12 months in San Diego County.
+Just as the map results, the list results on Zillow are also limited to a maximum of **40** results per page, at **20** pages max for a maximum of **800 listings per query**. We will use **price ranges** in order to reduce the number of listings associated with each query so that we can extract as much data as possible. Below, we make a list of all **request links** of listings with prices ranging from \$0 to \$20,000,000, and we run each link through our page **iterating function** in order to obtain a list with the **information** of every house found in Zillow that was sold in the last 12 months in San Diego County.
 
 
 ```python
@@ -88,7 +119,7 @@ for link in tqdm.tqdm(links):
     listings.extend(get_data(link))
 ```
 
-Now, we iterate though every listing, extract the useful information and append it to a dataframe as a new entry. 
+Now, we **iterate** though every listing, extract the useful **information** and append it to a **dataframe** as a new entry. 
 
 
 ```python
@@ -100,7 +131,7 @@ for listing in tqdm.tqdm(listings):
         df = pd.concat([df, pd.DataFrame(information, index=[0])], axis=0)
 ```
 
-Finally, we clean our data by removing duplicate listings, resetting the index and saving it as a .csv file so that it can be loaded without making the requests a second time.
+Finally, we **clean** our data by removing duplicate listings, resetting the index and saving it as a **.csv** file so that it can be loaded without making the requests a second time.
 
 
 ```python
@@ -110,7 +141,7 @@ df.reset_index(drop = True, inplace=True)
 df.to_csv('zillow_listings.csv', index=False)
 ```
 
-Now that we saved the dataframe, we can visualize the first 5 entries of our dataset, which consists of 26701 listings with 44 features each.
+Now that we saved the **dataframe**, we can **visualize** the first 5 entries of our dataset, which consists of **26701** listings with **44** features each.
 
 
 ```python
@@ -413,6 +444,4 @@ df.head(5)
 </table>
 </div>
 
-
-
-In the next steps of the project, we will use this dataset to visualize the patterns in the data, and build a model that predicts the price based on common variables in the data.
+In the next steps of the project, we will use this **dataset** to **visualize** the **patterns** in the data, and build a **model** that **predicts** the price based on key variables in the data.
