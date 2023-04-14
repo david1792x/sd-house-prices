@@ -49,6 +49,7 @@ The general workflow diagram of the project is shown below.
 - Create **visualizations** and extract **patterns** from the data
 - Train a simple **machine learning** model to **predict** house prices based on home information
 - Design and deploy a **web application** that predicts house prices according to user input
+- Write **documentation** and **project reports** that correctly showcase the work made
 
 ## **Project development**
 ### Part I. Extracting dataset from Zillow
@@ -116,6 +117,28 @@ Now that we have a trained model that performs as desired, we can save it and us
 
 ---
 
-## **Discussion and final remarks**
+## **Discussion**
+By analizing the **performance metrics** of the model, we can see that our model has an average of **14.12%** error in the price predictions when compared to actual house values. This is **good enough** for the few amount of data available and the low number of metrics used to model prices. Some of the models offered by **big companies** with access to entire teams and public data records manage to predict prices at an error rate as low as **2.16%** for on-market homes. These models are developed to serve a **commercial** purpose and this model looks to emulate that at a much lower complexity level.
 
-Link to the complete [Jupyter](jupyter/sd_house_prices_complete.ipynb) Notebook of the project (not descriptive).
+Some of the areas of opportunity within the project are listed below.
+- The method use to scrape the Zillow website, although effective, it is **not efficient** in terms of computational resources and a much faster, less exhaustive method for extracting data should be easy to concieve and implement.
+
+- Part of the cleaning process involved **limiting the price range** of the homes to the range from **\$100,000 to \$5,000,000**, and in a market as **diverse** as the San Diego County real estate market, a home whose price is outside of this range is very likely to exist, and the model would **not** be able to correctly predict its value since was not trained on such examples.
+
+- There is not a clear **separation** of areas inside the San Diego City, so certain zip codes were associated with areas that do not belong to those zip codes. This was made in such a way that reduces the number of cities/neighborhoods involved , but it can lead to **confusion and inaccuracy** in correctly defining the home location.
+
+- The web application uses the inputted city/neighborhood in order to calculate the **coordinates** of the home which can lead to **larger errors**, since the location is an important factor in determining house price.
+
+- Even if the web application allows for any **parameter combination** inside the set limits to be inputted into the predictor model, it is important to note that the model was trained on **real home data**, so homes with extreme values that do not match to a realistic home will have a **high error** in the predicted price.
+
+- No prediction made with this model should be taken as a **given**, since the error rate is pretty high for real life purposes. There are online tools offered by platforms like **Zillow** or **Redfin** that have access to a lot more data and whose predictions can actually be used for **real life, real estate purposes.** This project was made with the sole purpose of **learning** and **growing** my experience in the **machine learning** industry.
+
+## **Final remarks**
+The results are **satisfactory** in accordance to the project objectives and the complexity of the designed model. This project managed to integrate very important stages in a regular **machine learning workflow**, from getting the data right from the source and creating **visualizations** to training a **machine learning** model, reporting **performance metrics** and **deploying** it for real case use. Here is a link to the complete [Jupyter](jupyter/sd_house_prices_complete.ipynb) Notebook of the project containing only the Python code associated with the first three stages for **reproducibility** purposes.
+
+Some of the next steps that are proposed to improve the quality of the project are listed below.
+- Leverage tools like Zillow's **Zestimate** and the **Redfin Estimate** to improve model performance
+- Improve the **area mapping** of houses inside the model by correctly classifying zones
+- Add **map functionality** to the Streamlit web application to correctly input house location
+- Only allow for **real parameter combinations** to be chosen in the web application
+- Increase the number of **samples** in order to expand the capabilities of the model
