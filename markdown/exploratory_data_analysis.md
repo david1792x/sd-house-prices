@@ -578,7 +578,7 @@ plt.show()
 
 
     
-![png](images/output_12_0.png)
+![png](/images/output_12_0.png)
     
 
 
@@ -597,7 +597,7 @@ plt.show()
 
 
     
-![png](images/output_14_0.png)
+![png](/images/output_14_0.png)
     
 
 
@@ -616,7 +616,7 @@ plt.show()
 
 
     
-![png](images/output_16_0.png)
+![png](/images/output_16_0.png)
     
 
 
@@ -635,7 +635,7 @@ plt.show()
 
 
     
-![png](images/output_18_0.png)
+![png](/images/output_18_0.png)
     
 
 
@@ -654,7 +654,7 @@ plt.show()
 
 
     
-![png](images/output_20_0.png)
+![png](/images/output_20_0.png)
     
 
 
@@ -854,7 +854,7 @@ plt.show()
 
 
     
-![png](images/output_31_0.png)
+![png](/images/output_31_0.png)
     
 
 
