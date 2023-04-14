@@ -7,10 +7,10 @@ The app was deployed using Streamlit Cloud, and it can be accessed using [this l
 
 When the web app is opened, the following menu is, where the user can select between the different parameters that compose our model. 
 
-![Streamlit image](images/streamlit_1.png)
+![Streamlit image](/images/streamlit_1.png)
 
 Once the user inputs the house data, a prediction is made when clicking the predict button. In this case, the model predicts a price of \\$903,068 for a 3 bedroom, 3 bathroom condominium with a living area of 1250 sqft, located in Carlsbad, CA.
 
-![Streamlit image](images/streamlit_2.PNG)
+![Streamlit image](/images/streamlit_2.PNG)
 
 Something that must be noted regarding this project is that the model was trained on real data from the real estate market. The model was not trained to predict prices of unlikely parameters, like a house with 10 bedrooms and 1 bathroom, or a 7000 sqft home with 1 bedroom. Even if the web app allows these kinds of homes to be inputted, the predictions are not accurate at all and no prediction made with this web app should be taken as a given, since it is a very basic model with a lot of room for improvement. 
