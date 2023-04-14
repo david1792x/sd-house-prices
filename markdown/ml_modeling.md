@@ -1,8 +1,8 @@
-## **Modelling our data with machine learning**
+# **Modelling our data with machine learning**
 
-Once our data is cleaned, we can move over to preprocessing it and creating a model for predictions. We are looking to build a supervised machine learning model that solves a regression task by inputting tabular data.
+Once our data is **cleaned**, we can move over to **preprocessing** it and creating a model for **predictions**. We are looking to build a **supervised machine learning** model that solves a **regression** task by inputting **tabular data**.
 
-To start off, we import the required modules and create a preprocessing pipeline that takes our clean dataset and transforms it to a model-friendly representation. To do this, we separate our data into numerical and categorical features, which will be treated differently by our preprocessing pipeline with the help of a scikit-learn ColumnTransformer. The numerical features will be passed through unchanged, since we will use a tree-based model (XGBoost) that does not require feature scaling (standarization), and the only thing we need to do is encode our categorical data using One-Hot encoding. We encode the home type and city variables to finish our preprocessor transformer.
+To start off, we import the required modules and create a **preprocessing pipeline** that takes our clean dataset and **transforms** it to a model-friendly representation. To do this, we separate our data into numerical and categorical features, which will be treated differently by our preprocessing pipeline with the help of a scikit-learn  `ColumnTransformer`. The numerical features will be **passed through** unchanged, since we will use a **tree-based model (XGBoost)** that does not require feature scaling (standarization), and the only thing we need to do is encode our categorical data using **One-Hot encoding**. We encode the home type and city variables to finish our preprocessor transformer.
 
 
 ```python
@@ -23,7 +23,7 @@ preprocessor = ColumnTransformer([('ohe', OneHotEncoder(sparse_output= False), c
                                 remainder = 'drop')
 ```
 
-Now, we can move over to making our final pipeline, which connects our preprocessor to an estimator that will learn the underlying patterns in the data and output a price prediction. We will use an extreme gradient boosting tree model, since it is one of the best performing models when working with tabular data, whose hyperparameters have been tuned using cross-validation.
+Now, we can move over to making our **final pipeline**, which connects our **preprocessor** to an **estimator** that will learn the underlying patterns in the data and output a price prediction. We will use an **extreme gradient boosting tree** model, since it is one of the best performing models when working with **tabular data**, whose **hyperparameters** have already been **tuned** using **cross-validation**.
 
 
 ```python
@@ -36,7 +36,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 pipeline = Pipeline([('preprocessor', preprocessor), ('estimator', XGBRegressor(learning_rate = 0.1, max_depth = 7, n_estimators = 200, reg_lambda = 0.1, reg_alpha = 0.1))])
 ```
 
-Now that we have defined the complete model pipeline, we can train and test the model using cross validation and assess the quality of the model's performance. We will use the mean absolute error, root mean square error, and R² value to rate our model's performance.
+Now that we have defined the complete **model pipeline**, we can **train** and **test** the model using **cross validation** and assess the quality of the model's performance. We will use the **mean absolute error, root mean square error , R² value**, and **average error** to rate our **model's performance**.
 
 
 ```python
@@ -74,9 +74,9 @@ print(f'Average error standard deviation: {np.std(average_error):.4f} or {np.std
     Average error standard deviation: 0.0025 or 0.25%
     
 
-The mean absolute error (MAE) shows the mean difference between actual and predicted price, while the root mean squared error (RMSE) shows the square root of the differences of the squared values (penalizes large differences). We can see that the mean of the cross validated errors are \$146,226 for the mean absolute error, and \$248,083 for the mean squared error. This errors are calculated across all price ranges, so they are most notable in high value homes, as we will see further on. The R² value is one of the most important metrics for quantifying our model performance, and it describes how much of the variance in the price can be attributed to the predictor variables that our model used. In this case, R² is 0.8634, which tells us that our model is capable of explaining 86.34% of the variance in house price, which is pretty high. The average error determines how far the prediction is from the actual price across all listings, and in this case the mean error is 14.12% with a standard deviation of 0.25% (13.87% to 14.37%).
+The **mean absolute error (MAE)** shows the mean difference between actual and predicted price, while the **root mean squared error (RMSE)** shows the square root of the differences of the squared values (penalizes large differences). We can see that the mean of the cross validated errors are **\$146,226** for the mean absolute error, and **\$248,083** for the mean squared error. This errors are calculated across all price ranges, so they are most notable in high value homes, as we will see further on. The R² value is one of the most important metrics for quantifying our model performance, and it describes how much of the **variance** in the price can be **attributed** to the predictor variables that our model used. In this case, R² is **0.8634**, which tells us that our model is capable of **explaining 86.34%** of the **variance** in house price, which is pretty high. The average error determines how far the prediction is from the actual price across all listings, and in this case the mean error is **14.12%** with a standard deviation of 0.25% (13.87% to 14.37%).
 
-Now, we will split our data into a training (80%) and testing (20%) set, train the model on the training set, and predict the prices on the testing set. As we can see, the predicted price is pretty close to the actual price on most examples, and while there is a variation, the error is relatively small in percentage across price ranges.
+Now, we will split our data into a **training** (80%) and **testing** (20%) set, train the model on the training set, and predict the prices on the testing set. As we can see, the predicted price is pretty close to the actual price on most examples, and while there is a **variation**, the error is relatively **small** in percentage across price ranges.
 
 
 ```python
@@ -182,7 +182,7 @@ predictions.head(10)
 </div>
 
 
-Something interesting that we can extract from our model, since it is tree-based, is the importance of the features in determining a prediction. The most important factor in determining house price is whether the house is a mobile home (manufactured) or not. After that, the living area is the second most important factor, and after those two, the city or location of the house is the next factor to take into account. Some areas like Coronado, Clairemont and La Jolla, among others, have a clearer price range than other areas.
+Something interesting that we can extract from our model, since it is tree-based, is the **importance** of the features in determining a prediction. The most important factor in determining house price is whether the house is a **mobile home (manufactured)** or not. After that, the **living area** is the second most important factor, and after those two, the **city** or **location** of the house is the next factor to take into account. Some areas like **Coronado, Clairemont** and **La Jolla**, among others, have a clearer price range than other areas.
 
 
 ```python
@@ -246,7 +246,7 @@ feature_importances.head(10)
 </div>
 
 
-Finally, we can use our model to predict house prices of synthetic, or made up data. We define three different homes, two regular single family homes, and one mobile home, located in Chula Vista, La Jolla and Poway respectively. The living area is chosen according to the selected number of bedrooms and bathrooms and the coordinates are taken from the mean values of the chosen zone. These three homes describe homes at an expected medium, high and low price ranges respectively
+Finally, we can use our model to **predict** house prices of **synthetic**, or **made up** data. We define three different homes, two regular single family homes, and one mobile home, located in **Chula Vista, La Jolla** and **Poway** respectively. The **living area** is chosen according to the selected number of bedrooms and bathrooms and the coordinates are taken from the mean values of the chosen zone. These three homes describe homes at an **expected medium, high** and **low price ranges** respectively
 
 
 ```python
@@ -318,7 +318,7 @@ synthetic_data
 </div>
 
 
-The model predicted a price of \$799,958 for the medium priced home, \$3,789,290 for the expensive home, and \$305,865 for the cheap home. These results are comparable to the actual house prices of real, similar home. The final step is to save our model in order to create a simple web app that allows a user to input the required data, and returns a price estimate for that home.
+The model predicted a price of **\$799,958** for the medium priced home, **\$3,789,290** for the expensive home, and **\$305,865** for the cheap home. These results are comparable to the actual house prices of **real, similar homes**. The final step is to **save** our model in order to create a simple **web app** that allows a user to input the required data, and returns a **price estimate** for that home.
 
 
 ```python
@@ -328,4 +328,4 @@ file_name = 'sd_pipeline.pkl'
 pickle.dump(pipeline, open(file_name, 'wb'))
 ```
 
-Now, we can open our model using Streamlit and make predictions with the saved pipeline using data with the same format as the one used to train it.
+Now, we can open our model using `Streamlit` and make **predictions** with the saved **pipeline** using data with the same format as the one used to train it.
