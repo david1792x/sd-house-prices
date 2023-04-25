@@ -1,4 +1,4 @@
-# **House Price Predictions in San Diego County** :house_with_garden: :moneybag: :computer:
+# **House Price Predictions in San Diego County** :house_with_garden: :moneybag:
 
 ## **Introduction**
 **San Diego County** is located in southwest California. It is one of the most populous counties in the United States, with over **3.3 million** inhabitants, comprising **18** different cities, including the **San Diego - Chula Vista - Carlsbad Metropolitan Area**, which is the 17th most populous metropolitan area in the United States. San Diego County also has a direct border with Mexico, and the San Ysidro Port of Entry is the busiest land border crossing in the entire western hemisphere.
