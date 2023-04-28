@@ -45,7 +45,7 @@ The general workflow diagram of the project is shown below.
 </div>
 
 ## **Objectives**
-- Use **Zillow** house listings to create a **dataset** of homes sold in San Diego county between April 2022 and April 2023
+- Use **Zillow** listings to create a **dataset** of homes sold in San Diego County from April 2022 to April 2023
 - Create **visualizations** and extract **patterns** from the data
 - Train a simple **machine learning** model to **predict** house prices based on home information
 - Design and deploy a **web application** that predicts house prices according to user input
