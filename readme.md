@@ -110,7 +110,7 @@ Now that we have a trained model that performs as desired, we can save it and us
 |Detailed information|
 |:---------------------------------------------:|
 |Link to the [markdown](markdown/deploy_web_app.md) file|
-| Link to the [Python](StreamlitApp/predictor_app.py) script|
+| Link to the [Python](streamlit/predictor_app.py) script|
 |Link to the [web application](https://david1792x-sd-house-prices.streamlit.app/)|
 
 </div>
