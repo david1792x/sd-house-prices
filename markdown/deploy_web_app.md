@@ -2,7 +2,7 @@
 
 As of now, we have **retrieved** our data from Zillow, **cleaned** and **visualized** it, and created a **machine learning** model that predicts house price based on the data. The final step is to create a very simple **web app** that allows any user to input house data and get a **prediction** using the trained model. We will construct this app using `Streamlit`, which is a very **user friendly** environment for creating **data-centric** web apps in Python.
 
-The directory where the **.py** file associated with the web app, the **model** and the **requirements** of the app are stored, is located [here](StreamlitApp/).
+The directory where the **.py** file associated with the web app, the **model** and the **requirements** of the app are stored, is located [here](/streamlit/).
 The app was deployed using **Streamlit Cloud**, and it can be accessed using [this link](https://david1792x-sd-house-prices.streamlit.app/).
 
 When the **web app** is opened, the following menu is, where the user can select between the different **parameters** that compose our model. 
