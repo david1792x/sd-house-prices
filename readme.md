@@ -40,7 +40,7 @@ The general workflow diagram of the project is shown below.
     
 |<img src='images/ml_diagram.jpg' width = '750'>|
 |:---------------------------------------------:|
-| ***Figure 7.** Workflow diagram of project*   |
+| ***Figure 7.** Workflow diagram of the project*   |
     
 </div>
 
